@@ -10,5 +10,4 @@ public class HaidenApplication
     {
         SpringApplication.run(HaidenApplication.class, args);
     }
-
 }
