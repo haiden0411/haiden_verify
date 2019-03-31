@@ -1,16 +1,31 @@
 package com.huawei.domain;
+import javax.persistence.*;
+import java.io.Serializable;
 /**
  * Author：胡灯
  * Date：2019-03-28 20:56
  * Description：<描述>
  */
-public class Emp
+@Entity
+@Table(name = "t_emp")
+public class Emp implements Serializable
 {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "age")
     private Integer age;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "address")
     private String address;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "dept_id")
+    private Dept dept;
     public Emp()
     {
     }
@@ -57,9 +72,13 @@ public class Emp
     {
         return address;
     }
-    public void setAddress(String address)
+    public Dept getDept()
     {
-        this.address = address;
+        return dept;
+    }
+    public void setDept(Dept dept)
+    {
+        this.dept = dept;
     }
     @Override
     public String toString()
