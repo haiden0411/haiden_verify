@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymleaf test</title>
+</head>
+<body>
+    <h2>thymeleaf3语法</h2>
+    <p th:text="${thText}"></p>
+    <p th:utext="${thUText}"></p>
+    <hr>
+    <div>
+        <p th:each="message:${thEach}" th:text="${message}"></p>
+    </div>
+    <hr>
+    <p th:text="${thIf}" th:if="${not #strings.isEmpty(thIf)}"></p>
+    <hr>
+    <div th:object="${thObject}">
+        <p>ID:<span th:text="${id}" /></p>
+        <p>TH:<span th:text="*{name}" /></p>
+        <p>DE:<span th:text="*{desc}" /></p>
+    </div>
+
+
+    <footer th:fragment="copy">
+        &copy; 2011 The Good Thymes Virtual Grocery
+    </footer>
+
+
+    <!--<div th:insert="footer :: copy"></div>-->
+    <div th:replace="footer :: copy"></div>
+    <div th:include="footer :: copy"></div>
+
+
+</body>
+</html>
